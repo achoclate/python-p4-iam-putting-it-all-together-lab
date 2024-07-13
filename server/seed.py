@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 
 from random import randint, choice as rc
@@ -11,13 +12,11 @@ fake = Faker()
 
 with app.app_context():
 
-    print("Deleting all records...")
     Recipe.query.delete()
     User.query.delete()
 
     fake = Faker()
 
-    print("Creating users...")
 
     # make sure users have unique usernames
     users = []
@@ -42,7 +41,6 @@ with app.app_context():
 
     db.session.add_all(users)
 
-    print("Creating recipes...")
     recipes = []
     for i in range(100):
         instructions = fake.paragraph(nb_sentences=8)
@@ -60,4 +58,4 @@ with app.app_context():
     db.session.add_all(recipes)
     
     db.session.commit()
-    print("Complete.")
+    
